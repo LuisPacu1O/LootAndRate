@@ -5,7 +5,7 @@ export default function Filters({ filters, setFilters, genres, platforms, publis
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 w-full max-w-8xl mx-auto mb-6">
       <Input
-        placeholder="Buscar juego"
+        placeholder="Search game"
         value={filters.search}
         onChange={(e) => setFilters({ ...filters, search: e.target.value })}
       />
