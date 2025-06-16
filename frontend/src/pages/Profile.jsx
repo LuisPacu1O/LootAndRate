@@ -13,7 +13,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [profileImage, setProfileImage] = useState(null);
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const gamesPerPage = 12;
   const navigate = useNavigate();
 
@@ -39,8 +39,10 @@ export default function Profile() {
     reader.onloadend = async () => {
       try {
         const base64 = reader.result;
-
-        const res = await updateAvatar(base64)
+        const res = await updateAvatar(base64);
+        
+        const updatedUser = { ...user, avatar: res.data.avatar };
+        setUser(updatedUser);
 
         setProfileImage(res.data.avatar);
       } catch (err) {
@@ -52,11 +54,11 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    console.log(user)
     if (user?.avatar) {
       setProfileImage(user.avatar);
     }
   }, [user]);
+
   const filteredGames = userGames.filter((g) => {
     const playedEnough = Number(g.duration) >= filters.minHours;
     const matchesStatus = filters.status ? g.status === filters.status : true;

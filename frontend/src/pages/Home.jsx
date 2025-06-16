@@ -90,7 +90,7 @@ export default function Home() {
             </div>
           ) : games.length === 0 ? (
             <div className="text-gray-300 text-lg text-center bg-gray-800 border border-gray-700 p-6 rounded-xl w-full max-w-md">
-              No se encontraron juegos con esos filtros.
+              Didn't find games with those filters
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 w-full">

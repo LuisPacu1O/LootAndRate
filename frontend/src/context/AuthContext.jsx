@@ -1,6 +1,7 @@
 import { createContext, useState, useContext, useEffect} from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
 import Cookies from 'js-cookie'
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -15,6 +16,7 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [errors, setErrors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (errors.length > 0) {
@@ -25,27 +27,27 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
-  const signup = async (user) => {
+  const signup = async (userData) => {
     try {
-      const res = await registerRequest(user);
-      if (res.status === 200) {
-        setUser(res.data);
-        setIsAuthenticated(true);
-      }
+      await registerRequest(userData);
+      const res = await verifyTokenRequest(Cookies.get("token"));
+      setUser(res.data);
+      setIsAuthenticated(true);
+      navigate('/');
     } catch (error) {
-      console.log(error.response.data);
       setErrors(error.response.data.message);
     }
   };
 
-  const signin = async (user) => {
+  const signin = async (userData) => {
     try {
-      const res = await loginRequest(user);
+      await loginRequest(userData);
+      const res = await verifyTokenRequest(Cookies.get("token"));
       setUser(res.data);
       setIsAuthenticated(true);
+      navigate('/');
     } catch (error) {
-      console.log(error);
-      // setErrors(error.response.data.message);
+      setErrors(error.response?.data?.message || "Error");
     }
   };
 
@@ -83,6 +85,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         signup,
         signin,
         logout,
