@@ -52,6 +52,7 @@ export default function Profile() {
   };
 
   useEffect(() => {
+    console.log(user)
     if (user?.avatar) {
       setProfileImage(user.avatar);
     }

@@ -24,7 +24,7 @@ export default function UserReviewCard({ review, onDelete, gameId }) {
 
       <p className="text-gray-300">{review.comment}</p>
       <div className="flex justify-between items-center mt-2">
-        <div className="text-xs text-gray-500">Estado: {review.status}</div>
+        <div className="text-xs text-gray-500">Status: {review.status}</div>
         <div className="flex gap-2">
           <button
             onClick={handleEdit}

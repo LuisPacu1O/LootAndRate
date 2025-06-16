@@ -10,13 +10,13 @@ export default function Filters({ filters, setFilters, genres, platforms, publis
         onChange={(e) => setFilters({ ...filters, search: e.target.value })}
       />
       <SearchableSelect
-        label="Género"
+        label="Genre"
         value={filters.genre}
         onChange={(value) => setFilters({ ...filters, genre: value })}
         options={genres.map((g) => ({ label: g.name, value: g.slug }))}
       />
       <SearchableSelect
-        label="Plataforma"
+        label="Platform"
         value={filters.platform}
         onChange={(value) => setFilters({ ...filters, platform: value })}
         options={platforms.map((p) => ({ label: p.name, value: p.id.toString() }))}
@@ -28,7 +28,7 @@ export default function Filters({ filters, setFilters, genres, platforms, publis
         options={publishers.map((p) => ({ label: p.name, value: p.slug }))}
       />
       <SearchableSelect
-        label="Desarrollador"
+        label="Developer"
         value={filters.developers}
         onChange={(value) => setFilters({ ...filters, developers: value })}
         options={developers.map((d) => ({ label: d.name, value: d.slug }))}
