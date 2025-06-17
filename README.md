@@ -77,11 +77,7 @@ src/
 ```
 ## 🧰 Tecnologías utilizadas
 
-React 19
-Vite
-Material UI
-SweetAlert2
-React Hook Form + Yup
+javascript logo  nodejs logo  html5 logo  css3 logo  fastapi logo  fastapi logo
 
 ## 🔗 Notas importantes
 
