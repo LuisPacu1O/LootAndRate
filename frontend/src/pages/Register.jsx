@@ -38,7 +38,7 @@ const Register = () => {
             type="text"
             {...register("name", { required: true })}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
-            placeholder='Nombre de usuario'
+            placeholder='Username'
           />
           {errors.name && <p className='text-red-400 text-sm'>Username is needed</p>}
 
@@ -46,7 +46,7 @@ const Register = () => {
             type="email"
             {...register("email", { required: true })}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
-            placeholder='Correo electrónico'
+            placeholder='Email'
           />
           {errors.email && <p className='text-red-400 text-sm'>Email is needed</p>}
 
@@ -54,7 +54,7 @@ const Register = () => {
             type="password"
             {...register("password", { required: true })}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
-            placeholder='Contraseña'
+            placeholder='Password'
           />
           {errors.password && <p className='text-red-400 text-sm'>Password is needed</p>}
 
