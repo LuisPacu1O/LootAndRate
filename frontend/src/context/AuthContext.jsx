@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       await registerRequest(userData);
-      const res = await verifyTokenRequest(Cookies.get("token"));
+      const res = await verifyTokenRequest();
       setUser(res.data);
       setIsAuthenticated(true);
       navigate('/');
@@ -42,8 +42,7 @@ export const AuthProvider = ({ children }) => {
   const signin = async (userData) => {
     try {
       await loginRequest(userData);
-      console.log(Cookies.get("token"))
-      const res = await verifyTokenRequest(Cookies.get("token"));
+      const res = await verifyTokenRequest();
       setUser(res.data);
       setIsAuthenticated(true);
       navigate('/');
