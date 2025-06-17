@@ -29,19 +29,20 @@ Disfruta de una interfaz atractiva y **adaptada** tanto a dispositivos móviles 
 ## 🛠 Instalación y ejecución
 
 ### 1. Clona el repositorio
-
+```bash
 git clone <url-del-repo>
 cd frontend
+```
 
 ### 2. Instala las dependencias
-
+```bash
 npm install
-
+```
 ### 3. Ejecuta la app en modo desarrollo
 
-
+```bash
 npm run dev
-
+```
 ### 4. Abre tu navegador
 Visita http://localhost:5173 (o el puerto indicado en la terminal).
 
@@ -67,13 +68,13 @@ Reviews: Visualiza, edita o elimina tus reseñas.
 Stats: Consulta tus estadísticas generales (juegos completados, horas jugadas, reseñas escritas).
 
 ## 📁 Estructura del proyecto
-
+```bash
 src/
 ├── components/      # Componentes reutilizables (NavBar, CardGame, Input, etc.)
 ├── pages/           # Vistas principales (Home, Register, Login, Profile, GameDetails)
 ├── api/             # Servicios de comunicación con el backend
 ├── context/         # Contextos globales (autenticación, modales)
-
+```
 ## 🧰 Tecnologías utilizadas
 
 React 19
