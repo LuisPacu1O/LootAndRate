@@ -42,6 +42,7 @@ export const AuthProvider = ({ children }) => {
   const signin = async (userData) => {
     try {
       await loginRequest(userData);
+      console.log(Cookies.get("token"))
       const res = await verifyTokenRequest(Cookies.get("token"));
       setUser(res.data);
       setIsAuthenticated(true);
