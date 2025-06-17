@@ -1,20 +1,20 @@
 import axios from "./axios";
 import rawgClient from "./rawgClient";
 
-export const getUserGames = () => axios.get('/usergames');
+export const getUserGames = () => axios.get('/api/usergames');
 export const getUserGame = async (gameId) =>{
-  const res = await axios.get(`/usergames/${gameId}`);
+  const res = await axios.get(`/api/usergames/${gameId}`);
   return res.data;
 } 
-export const postUserGame = (game) => axios.post(`/usergames`, game);
+export const postUserGame = (game) => axios.post(`/api/usergames`, game);
 export const putUserGame = async (gameId, payload) => {
-  const res = await axios.put(`/usergames/${gameId}`,payload);
+  const res = await axios.put(`/api/usergames/${gameId}`,payload);
   return res.data; 
 }
-export const deleteUserGame = (gameId) => axios.delete(`/usergames/${gameId}`);
+export const deleteUserGame = (gameId) => axios.delete(`/api/usergames/${gameId}`);
 
 
-export const updateAvatar = (avatar) => axios.post('/avatar',{avatar: avatar}, {withCredentials: true});
+export const updateAvatar = (avatar) => axios.post('/api/avatar',{avatar: avatar}, {withCredentials: true});
 
 export const fetchGames = async () => {
   const res = await rawgClient.get('/games');
