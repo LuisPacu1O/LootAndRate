@@ -1,8 +1,11 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://lootandrate.onrender.com/api',
-    withCredentials: true
-})
+    baseURL: import.meta.env.VIE_API_URL,
+    withCredentials: true,
+    headers:{
+        "Content-Type": 'application/json'
+    }
+});
 
 export default instance; 
