@@ -1,6 +1,6 @@
-import { createContext, useState, useContext, useEffect} from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth";
-import Cookies from 'js-cookie'
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
@@ -29,55 +29,59 @@ export const AuthProvider = ({ children }) => {
 
   const signup = async (userData) => {
     try {
-      await registerRequest(userData);
-      const res = await verifyTokenRequest();
-      setUser(res.data);
+      const res = await registerRequest(userData);
+      localStorage.setItem("token", res.data.token);
+      const verifyRes = await verifyTokenRequest();
+      setUser(verifyRes.data);
       setIsAuthenticated(true);
-      navigate('/');
-    } catch (error) {
-      setErrors(error.response.data.message);
-    }
-  };
-
-  const signin = async (userData) => {
-    try {
-      await loginRequest(userData);
-      const res = await verifyTokenRequest();
-      setUser(res.data);
-      setIsAuthenticated(true);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       setErrors(error.response?.data?.message || "Error");
     }
   };
 
-  // const logout = async () => {
-  //   await logout();
-  //   setUser(null);
-  //   setIsAuthenticated(false);
-  // };
+  const signin = async (userData) => {
+    try {
+      const res = await loginRequest(userData);
+      localStorage.setItem("token", res.data.token);
+      const verifyRes = await verifyTokenRequest();
+      setUser(verifyRes.data);
+      setIsAuthenticated(true);
+      navigate("/");
+    } catch (error) {
+      setErrors(error.response?.data?.message || "Error");
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    setIsAuthenticated(false);
+    navigate("/login");
+  };
 
   useEffect(() => {
     const checkLogin = async () => {
-      const cookies = Cookies.get();
-      if (!cookies.token) {
+      const token = localStorage.getItem("token");
+      if (!token) {
         setIsAuthenticated(false);
         setLoading(false);
         return;
       }
 
       try {
-        const res = await verifyTokenRequest(cookies.token);
-        if (!res.data) return setIsAuthenticated(false);
-        setIsAuthenticated(true);
+        const res = await verifyTokenRequest();
         setUser(res.data);
-        setLoading(false);
+        setIsAuthenticated(true);
       } catch (error) {
+        localStorage.removeItem("token");
         setIsAuthenticated(false);
+        console.log("error de autenticación: ", error);
+      } finally {
         setLoading(false);
-        console.log(error)
       }
     };
+
     checkLogin();
   }, []);
 
@@ -88,6 +92,7 @@ export const AuthProvider = ({ children }) => {
         setUser,
         signup,
         signin,
+        logout,
         isAuthenticated,
         errors,
         loading,
@@ -97,4 +102,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
