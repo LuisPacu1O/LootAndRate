@@ -1,47 +1,49 @@
+# 🎮 Loot&Rate
 
-🎮 Loot&Rate
-Loot&Rate es una aplicación web para gestionar tus videojuegos: los que has completado, estás jugando, quieres jugar o has abandonado. Además, puedes calificarlos y escribir reseñas personalizadas.
+**Loot&Rate** es una aplicación web para gestionar tus videojuegos: los que has completado, estás jugando, quieres jugar o has abandonado. Además, puedes calificarlos y escribir reseñas personalizadas.
 
-🚀 Características principales
-Registro y autenticación de usuarios
+---
+
+## 🚀 Características principales
+
+### 🔐 Registro y autenticación de usuarios
 Crea una cuenta y accede a todas las funcionalidades de la aplicación.
 
-Búsqueda avanzada de juegos
+### 🔎 Búsqueda avanzada de juegos
 Encuentra tus videojuegos favoritos filtrando por nombre, género, plataforma, distribuidor o desarrollador.
 
-Detalles completos de cada juego
+### 📄 Detalles completos de cada juego
 Accede a una vista detallada con toda la información relevante del videojuego.
 
-Puntuaciones y reseñas
+### ⭐ Puntuaciones y reseñas
 Valora los juegos que has jugado, añade reseñas personalizadas y guárdalos en tu perfil para editarlos o consultarlos más adelante.
 
-Estadísticas del perfil
+### 📊 Estadísticas del perfil
 Revisa todos tus juegos por estado, horas jugadas o nota. También podrás ver tus estadísticas generales: horas jugadas, juegos completados y número de reseñas escritas.
 
-Diseño moderno y responsive
+### 🖥️ Diseño moderno y responsive
 Interfaz atractiva y adaptada tanto a dispositivos móviles como a escritorio.
 
-🛠 Instalación y ejecución
-Clona el repositorio:
+---
 
-bash
-Copiar
-Editar
+## 🛠 Instalación y ejecución
+
+### 1. Clona el repositorio
+
+```bash
 git clone <url-del-repo>
 cd frontend
-Instala las dependencias:
-
+2. Instala las dependencias
 bash
 Copiar
 Editar
 npm install
-Ejecuta la app en modo desarrollo:
-
+3. Ejecuta la app en modo desarrollo
 bash
 Copiar
 Editar
 npm run dev
-Abre tu navegador:
+4. Abre tu navegador
 Visita http://localhost:5173 (o el puerto indicado en la terminal).
 
 🧭 Guía de uso
